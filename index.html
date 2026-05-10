@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beptus — em breve.">
+    <title>Beptus</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #0a0a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            overflow: hidden;
+        }
+
+        .aurora {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .aurora::before,
+        .aurora::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.35;
+        }
+
+        .aurora::before {
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, #38bdf8 0%, #818cf8 60%, transparent 100%);
+            top: -10%;
+            left: -15%;
+            animation: drift-a 20s ease-in-out infinite alternate;
+        }
+
+        .aurora::after {
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, #6366f1 0%, #38bdf8 50%, transparent 100%);
+            bottom: -10%;
+            right: -10%;
+            animation: drift-b 24s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift-a {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(8vw, 6vh) scale(1.1); }
+        }
+
+        @keyframes drift-b {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(-6vw, -8vh) scale(1.15); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .aurora::before,
+            .aurora::after {
+                animation: none;
+            }
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            user-select: none;
+        }
+
+        h1 {
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #38bdf8 20%, #818cf8 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        p {
+            margin-top: 1.5rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            color: #475569;
+            letter-spacing: 0.04em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora" aria-hidden="true"></div>
+    <main>
+        <h1>Beptus</h1>
+        <p>Algo novo está por vir.</p>
+    </main>
+</body>
+
+</html>
